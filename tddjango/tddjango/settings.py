@@ -36,6 +36,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_nose',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -81,3 +82,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 STATIC_URL = '/static/'
+
+src_root = os.path.realpath(os.path.join(os.path.dirname(__file__), '..'))
+TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
+NOSE_ARGS = ['--where=%s' % src_root, '--logging-filter=-django.db']
